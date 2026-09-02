@@ -10,7 +10,7 @@ public class Main {
 
         double altura, peso, imc = 0.0;
 
-        System.out.println("INFORMAÃ‡Ã•ES");
+        System.out.println("INFORMAÇÕES");
         System.out.println("================================");
 
         System.out.println("Digite seu nome:");

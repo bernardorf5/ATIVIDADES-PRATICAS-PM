@@ -1,5 +1,3 @@
-package praticaCarrinhoCompras;
-
 import java.util.ArrayList;
 
 public class Fatura {
@@ -7,7 +5,11 @@ public class Fatura {
     private double valorTotalFatura;
 
     public Fatura(ArrayList<Item> itens, double valorTotalFatura){
-        this.itens = new ArrayList<Item>();
+        if(itens != null){
+            this.itens = itens;
+        } else {
+            this.itens = new ArrayList<Item>();
+        }
         this.valorTotalFatura = valorTotalFatura;
     }
 

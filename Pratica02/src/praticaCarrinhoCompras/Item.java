@@ -1,5 +1,3 @@
-package praticaCarrinhoCompras;
-
 public class Item {
     private Produto produtoComprado;
     private int qntComprada;

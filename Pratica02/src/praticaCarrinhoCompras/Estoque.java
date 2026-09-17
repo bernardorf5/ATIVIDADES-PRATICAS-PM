@@ -1,3 +1,5 @@
+package praticaCarrinhoCompras;
+
 import java.util.HashMap;
 
 public class Estoque {

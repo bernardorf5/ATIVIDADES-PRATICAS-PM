@@ -1,3 +1,5 @@
+package praticaCarrinhoCompras;
+
 public class Produto {
     private String nome;
     private int codigo;

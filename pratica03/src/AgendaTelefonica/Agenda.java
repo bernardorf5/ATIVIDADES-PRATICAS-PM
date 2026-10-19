@@ -5,8 +5,8 @@ public class Agenda {
     private ArrayList<Contato> contatos;
     private int quantContatos;
 
-    public Agenda(ArrayList<Contato> contatos, int quantContatos){
-        this.contatos = contatos;
+    public Agenda(){
+        this.contatos = new ArrayList<>();
         this.quantContatos = contatos.size();
     }
 
@@ -16,8 +16,9 @@ public class Agenda {
 
     public void setContatos(ArrayList<Contato> contatos) {
         this.contatos = contatos;
+        this.quantContatos = this.contatos.size();
     }
-
+    
     public int getQuantContatos() {
         return quantContatos;
     }
@@ -36,7 +37,6 @@ public class Agenda {
             this.quantContatos = this.contatos.size();
             return true;
         }
-        this.quantContatos = this.contatos.size();
         return false;
     }
 

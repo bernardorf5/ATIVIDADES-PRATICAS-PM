@@ -1,10 +1,9 @@
 package AgendaTelefonica;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Agenda agendaContatos = new Agenda(new ArrayList<>(), 0);
+        Agenda agendaContatos = new Agenda();
         Scanner infoScanner = new Scanner(System.in);
         String escolhaScanner = "";
 
@@ -59,8 +58,13 @@ public class Main {
                     System.out.println("Contato adicionado!");
                 }
                 else if(escolhaContato == 4){
-                    System.out.println("Grau de Prioridade:");
+                    System.out.println("Grau de Prioridade(1 a 5):");
                     int grauPrioridade = infoScanner.nextInt();
+                    infoScanner.nextLine();
+                    while(grauPrioridade < 1 || grauPrioridade > 5){
+                        System.out.println("ERROR! Grau de Prioridade inválido");
+                        grauPrioridade = infoScanner.nextInt();
+                    }
                     infoScanner.nextLine();
                     System.out.println("Observação:");
                     String observacao = infoScanner.nextLine();
@@ -99,9 +103,14 @@ public class Main {
                 }
                 else {
                     System.out.println("ERROR! Opção não existe");
+                    continue;
                 }
 
-                
+                if(contatoParaRemover != null && agendaContatos.removerContato(contatoParaRemover)){
+                    System.out.println("Contato removido com sucesso!");
+                } else {
+                    System.out.println("ERROR! Contato não encontrado");
+                }
             }
             else if(escolhaScanner.equals("c")){
                 System.out.println("Digite o nome do contato que deseja buscar:");
@@ -138,6 +147,9 @@ public class Main {
             }
             else if(escolhaScanner.equals("f")){
                 System.out.println("A agenda tem atualmente: " + agendaContatos.getQuantContatos() + " contatos");
+            }
+            else {
+                System.out.println("ERROR! Opção inválida no menu");
             }
         }
         infoScanner.close();

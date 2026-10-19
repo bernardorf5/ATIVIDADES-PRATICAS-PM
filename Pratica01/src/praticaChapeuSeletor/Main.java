@@ -1,16 +1,20 @@
 package praticaChapeuSeletor;
 
 import java.util.Scanner;
+import java.lang.reflect.Array;
+import java.time.LocalDate;
+import java.time.Period;
 
 public class Main {
     public static void main(String[] args) {
         Scanner infoScanner = new Scanner(System.in);
 
-        Aluno aluno = null; 
+        Aluno[] listaAlunos = new Aluno[10];
+        int contadorAlunos = 0;
         int escolhaPainel;
 
         while (true) {
-            System.out.println("\nPainel de dados\n1- Registrar dados\n2- Exibir dados\n3- Chapéu Seletor\n4- Sair do programa");
+            System.out.println("\nPainel de dados\n1- Cadastrar Aluno\n2- Exibir dados\n3- Chapéu Seletor\n4- Sair do programa");
             escolhaPainel = infoScanner.nextInt();
             infoScanner.nextLine();
 
@@ -22,9 +26,10 @@ public class Main {
             if (escolhaPainel == 1) {
                 System.out.println("\nDigite o nome do aluno:");
                 String nome = infoScanner.nextLine();
-                
-                System.out.println("Digite a idade do aluno:");
-                int idade = infoScanner.nextInt();
+
+                System.out.println("Data de nascimento no formato ano-mês-dia(Exemplo: 2026-10-22): ");
+                String textoData = infoScanner.nextLine();
+                LocalDate dataNascimento = LocalDate.parse(textoData);
                 
                 System.out.println("====================================");
                 System.out.println("Características Aluno");
@@ -47,26 +52,19 @@ public class Main {
                 System.out.println("Criatividade:");
                 double criatividade = infoScanner.nextDouble();
 
-                aluno = new Aluno(nome, idade, coragem, inteligencia, ambicao, lealdade, estrategia, criatividade);
+                listaAlunos[contadorAlunos] = (new Aluno(nome, coragem, inteligencia, ambicao, lealdade, estrategia, criatividade, dataNascimento));
+                listaAlunos[contadorAlunos].setCodigoMatricula(listaAlunos[contadorAlunos].gerarCodigoMatricula(contadorAlunos + 1));
+                contadorAlunos++;
                 System.out.println("Aluno registrado com sucesso!");
             }
 
             if (escolhaPainel == 2) {
-                if (aluno == null) {
+                if (contadorAlunos == 0) {
                     System.out.println("\nNenhum dado foi registrado.");
                 } else {
-                    aluno.exibirInformacoes();
-                }
-            }
-
-            if (escolhaPainel == 3) {
-                if (aluno == null) {
-                    System.out.println("\nNenhum dado foi registrado.");
-                } else {
-                    System.out.println("\n====================================");
-                    System.out.println("O Chapéu Seletor determinou:");
-                    System.out.println(aluno.getNome() + " pertence à casa " + aluno.getCasa() + "!");
-                    System.out.println("====================================");
+                    for (int i = 0; i < contadorAlunos; i++) {
+                        listaAlunos[i].exibirInformacoes();
+                    }
                 }
             }
         }

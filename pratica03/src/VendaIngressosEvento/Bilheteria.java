@@ -30,4 +30,34 @@ public class Bilheteria {
         }
         return false;
     }
+
+    public Ingresso buscaIngresso(int codigoIngresso){
+        for(int i = 0; i < listaIngressos.size(); i++){
+            Ingresso ingressoAtual = listaIngressos.get(i);
+            if(ingressoAtual.getCodigo() == codigoIngresso){
+                return ingressoAtual;
+            }
+        }
+        return null;
+    }
+
+    public void listarIngressos(){
+        for(Ingresso i: listaIngressos){
+            i.exibirDadosIngresso();
+        }
+    }
+
+    public double calcularValorTotal(){
+        double valorTotal = 0;
+        for(Ingresso i: listaIngressos){
+            valorTotal += i.calcularValorFinal();
+        }
+        return valorTotal;
+    }
+
+    public void listarBeneficiosIngressos(){
+        for(Ingresso i: listaIngressos){
+            System.out.println("Benefício(s): " + i.obterBeneficios());
+        }
+    }
 }

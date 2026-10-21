@@ -18,8 +18,9 @@ public abstract class Ingresso {
         System.out.println("EVENTO: " + this.nomeEvento);
         System.out.println("SETOR: " + this.setor);
         System.out.println("VALOR: " + this.valorBase);
-        System.out.println("CÓDIGO: " + this.codigo + "\n");
-        System.out.println("==============================");
+        System.out.println("CÓDIGO: " + this.codigo);
+        System.out.println("BENEFÍCIOS: " + obterBeneficios());
+        System.out.println("==============================\n");
     }
 
     public int getCodigo() {
